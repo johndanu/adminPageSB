@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <% if (sub){%>
+      <p>hi</p>
+      <%= sub.subject %>
+
+      <%} else {%>
+        <p>no</p>
+    <%}%>
+    <%= sub._id %>
+    <h1>Unit page</h1>
+    <h1><%= sub.subject %></h1>
+    <form class="" action="/add_live/<%= sub._id %>" method="post">
+      <input type="hidden" name="subjectid" value="<%= sub._id %>">
+      <select  name="tutorid">
+          <% if (sub.tutors){ %>
+            <% sub.tutors.forEach(function(tute){ %>
+              <option value="<%= tute._id %>">
+              <%= tute.name %>
+              </option>
+            <% }) %>
+          <% }else{ %>
+            <option value="Nothing"></option>
+          <% } %>
+      </select>
+      <input type="text" name="title" placeholder="title">
+      <input type="text" name="unitno" placeholder="unit no">
+
+      <input type="text" name="description" placeholder="description">
+      <input type="text" name="urlID" placeholder="URL ID">
+      <input type="submit"  value="submit">
+    </form>
+    <% if (uni){%>
+      <p>hi</p>
+      <% uni.forEach(function(uni){%>
+        <p><%= uni.title%></p>
+        <!-- <a href="/del_unit/<%= uni._id %>">delete</a> -->
+      <%})%>
+
+      <%} else {%>
+        <p>no</p>
+    <%}%>
+
+  </body>
+</html>

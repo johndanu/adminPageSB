@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Tutors of <%= sub.subject %></h1>
+    <%if (sub.tutors){%>
+      <% sub.tutors.forEach(function(tut){ %>
+        <p>
+          <a href="/add_units/<%= sub._id %>"><%= tut.name %></p>
+        </p>
+        <% }); %>
+
+    <%}else{%>
+      <p>NO tutors found</p>
+    <%}%>
+    <form action="/add_tutor" method="post">
+      <input type="hidden" name="subID" value="<%= sub._id %>">
+      <input type="text" name="name">
+      <input type="submit"  value="submit">
+    </form>
+  </body>
+</html>

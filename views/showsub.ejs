@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Add Subject</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  </head>
+  <body>
+    <h1>Delete Your subjects</h1>
+    <% sub.forEach(function(sub){ %>
+      <p><%= sub.subject %></p>
+      <form class="" action="/subject_del" method="post">
+        <input type="hidden" name="id" value="<%= sub._id %>">
+        <input type="submit"  value="Delete Subject (<%= sub.subject %>)">
+        <a href="/tutors/<%= sub._id %>">Add tutors</a>
+      </form>
+      <% }); %>
+  </body>
+</html>
